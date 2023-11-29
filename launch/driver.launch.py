@@ -12,46 +12,46 @@ from launch.substitutions import LaunchConfiguration, Command
 import launch.actions
 import launch_ros.actions
 
-def to_urdf(xacro_path, urdf_path=None):
-    """Convert the given xacro file to URDF file.
-    * xacro_path -- the path to the xacro file
-    * urdf_path -- the path to the urdf file
-    """
-    # If no URDF path is given, use a temporary file
-    if urdf_path is None:
-        urdf_path = os.path.join(
-            get_package_share_directory("azure_kinect_ros_driver"),
-            "urdf",
-            "azure_kinect.urdf")
-    # open and process file
-    doc = xacro.process_file(xacro_path)
-    # open the output file
-    out = xacro.open_output(urdf_path)
-    out.write(doc.toprettyxml(indent='  '))
+# def to_urdf(xacro_path, urdf_path=None):
+#     """Convert the given xacro file to URDF file.
+#     * xacro_path -- the path to the xacro file
+#     * urdf_path -- the path to the urdf file
+#     """
+#     # If no URDF path is given, use a temporary file
+#     if urdf_path is None:
+#         urdf_path = os.path.join(
+#             get_package_share_directory("azure_kinect_ros_driver"),
+#             "urdf",
+#             "azure_kinect.urdf")
+#     # open and process file
+#     doc = xacro.process_file(xacro_path)
+#     # open the output file
+#     out = xacro.open_output(urdf_path)
+#     out.write(doc.toprettyxml(indent='  '))
 
-    return urdf_path  # Return path to the urdf file
+#     return urdf_path  # Return path to the urdf file
 
 def generate_launch_description():
     # Note: tf_prefix is not supported as an argument to the xacro file for robot/joint state publishers
     # Convert xacro to urdf for robot_state_publisher and joint_state_publisher
-    xacro_file = os.path.join(
-            get_package_share_directory("azure_kinect_ros_driver"),
-            "urdf",
-            "azure_kinect.urdf.xacro")
-    print("Robot description xacro_file : {}".format(xacro_file))
+    # xacro_file = os.path.join(
+    #         get_package_share_directory("azure_kinect_ros_driver"),
+    #         "urdf",
+    #         "azure_kinect.urdf.xacro")
+    # print("Robot description xacro_file : {}".format(xacro_file))
 
-    urdf_path = to_urdf(xacro_file) # convert, xacro to urdf
-    urdf = open(urdf_path).read()
-    print("Robot description urdf_path : {}".format(urdf_path))
+    # urdf_path = to_urdf(xacro_file) # convert, xacro to urdf
+    # urdf = open(urdf_path).read()
+    # print("Robot description urdf_path : {}".format(urdf_path))
 
     # Variable used for the flag to publish a standalone azure_description instead of the default robot_description parameter
-    remappings = [('robot_description', 'azure_description')]
+    # remappings = [('robot_description', 'azure_description')]
 
     return LaunchDescription([
-    DeclareLaunchArgument(
-        'overwrite_robot_description',
-        default_value="true" ,
-        description="Flag to publish a standalone azure_description instead of the default robot_description parameter."),
+    # DeclareLaunchArgument(
+    #     'overwrite_robot_description',
+    #     default_value="true" ,
+    #     description="Flag to publish a standalone azure_description instead of the default robot_description parameter."),
     ##############################################
     DeclareLaunchArgument(
         'depth_enabled',
