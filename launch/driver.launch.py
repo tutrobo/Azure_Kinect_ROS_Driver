@@ -53,13 +53,13 @@ def generate_launch_description():
     #     default_value="true" ,
     #     description="Flag to publish a standalone azure_description instead of the default robot_description parameter."),
     ##############################################
-    DeclareLaunchArgument(
+DeclareLaunchArgument(
         'depth_enabled',
         default_value="true",
         description="Enable or disable the depth camera"),
     DeclareLaunchArgument(
         'depth_mode',
-        default_value="WFOV_UNBINNED",
+        default_value="WFOV_2X2BINNED",
         description="Set the depth camera mode, which affects FOV, depth range, and camera resolution. See Azure Kinect documentation for full details. Valid options: NFOV_UNBINNED, NFOV_2X2BINNED, WFOV_UNBINNED, WFOV_2X2BINNED, and PASSIVE_IR"),
     DeclareLaunchArgument(
         'depth_unit',
@@ -79,7 +79,7 @@ def generate_launch_description():
         description="Resolution at which to run the color camera. Valid options: 720P, 1080P, 1440P, 1536P, 2160P, 3072P"),
     DeclareLaunchArgument(
         'fps',
-        default_value="5",
+        default_value="15",
         description="FPS to run both cameras at. Valid options are 5, 15, and 30"),
     DeclareLaunchArgument(
         'point_cloud',
@@ -91,7 +91,7 @@ def generate_launch_description():
         description="Colorize the point cloud using the RBG camera. Requires color_enabled and depth_enabled"),
     DeclareLaunchArgument(
         'point_cloud_in_depth_frame',
-        default_value="false",
+        default_value="true",
         description="Whether the RGB pointcloud is rendered in the depth frame (true) or RGB frame (false). Will either match the resolution of the depth camera (true) or the RGB camera (false)."),
     DeclareLaunchArgument( # Not a parameter of the node, rather a launch file parameter
         'required',
