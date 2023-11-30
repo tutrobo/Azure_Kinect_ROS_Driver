@@ -53,7 +53,7 @@ def generate_launch_description():
     #     default_value="true" ,
     #     description="Flag to publish a standalone azure_description instead of the default robot_description parameter."),
     ##############################################
-DeclareLaunchArgument(
+    DeclareLaunchArgument(
         'depth_enabled',
         default_value="true",
         description="Enable or disable the depth camera"),
